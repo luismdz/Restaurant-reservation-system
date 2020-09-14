@@ -1,0 +1,55 @@
+<div class="login-container">
+  <form nz-form
+    [formGroup]="loginForm">
+
+    <h1>Iniciar Sesión</h1>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Ingrese un correo electrónico válido.">
+        <nz-input-group nzPrefixIcon="user">
+          <input type="text"
+            nz-input
+            formControlName="email"
+            placeholder="Correo Electronico" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Ingrese una contraseña con mínimo seis caráteres.">
+        <nz-input-group nzPrefixIcon="lock">
+          <input type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Contraseña" />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button
+      nzType="primary"
+      [disabled]="!loginForm.valid"
+      (click)="onSignIn()">
+      Ingresar
+    </button>
+
+  </form>
+
+  <h2>ó</h2>
+
+  <button nz-button
+    nzType="primary"
+    class="btn-google"
+    (click)="onGoogleSignIn()">
+    <i nz-icon
+      nzType="google"
+      nzTheme="outline"></i>
+    Continuar con Google
+  </button>
+
+  <button nz-button
+    type="button"
+    nzType="link"
+    [routerLink]="['../', 'register']">
+    Nuevo usuario? Crea una cuenta
+  </button>
+</div>

@@ -1,0 +1,158 @@
+.img {
+  height: 20vh;
+  margin-bottom: 1rem;
+}
+
+.spinner {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  margin-left: 1rem;
+  width: 80px;
+}
+
+.details {
+  margin: 1rem;
+  // max-height: 400px;
+
+  nz-divider {
+    margin: 1rem 0;
+  }
+
+  &>div {
+    margin-bottom: 10px;
+  }
+
+  .img-details {
+    height: 200px;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 1rem;
+    display: none;
+
+
+    [nz-carousel-content] {
+      text-align: center;
+      height: 100%;
+      line-height: 160px;
+      color: #fff;
+      overflow: hidden;
+
+      &>div {
+        height: 100%;
+      }
+    }
+  }
+
+  nz-rate::ng-deep .ant-rate-star {
+    font-size: 16px;
+    color: #181818;
+    font-weight: bold;
+  }
+}
+
+nz-divider {
+  width: 100%;
+  margin: .75rem 0;
+}
+
+.card {
+  margin: 1.5rem 1rem;
+  width: 90%;
+  // height: 400px;
+  max-width: 400px;
+
+  .card-reservation {
+    padding: .5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+
+    h3 {
+      text-align: center;
+      font-weight: 700;
+      color: #181818;
+      font-family: inherit;
+    }
+
+    nz-form-item {
+      margin-bottom: .5rem;
+
+      nz-form-label {
+        padding-bottom: 0.25rem;
+      }
+
+      small.error {
+        color: #ef233c;
+      }
+    }
+
+    button {
+      width: 100%;
+      margin: 0;
+      margin-top: .75rem;
+    }
+  }
+}
+
+.map {
+  margin: 1rem;
+  margin-top: .25rem;
+  width: 90%;
+  max-width: 500px;
+
+
+  nz-divider {
+    margin-bottom: 1rem;
+  }
+}
+
+
+@media(min-width:768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 90%;
+    margin: 0 auto;
+
+    .inner-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .details {
+        width: 50%;
+
+        .img-details {
+          display: block;
+        }
+
+      }
+
+      .card {
+        width: 40%;
+      }
+    }
+  }
+
+}
+
+@media(min-width:1600px) {
+  .img {
+    height: 30vh;
+  }
+
+  .container {
+    .map {
+      max-width: 60%;
+    }
+  }
+
+}

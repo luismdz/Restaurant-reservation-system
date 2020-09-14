@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Raleway:wght@300;400;500;600;700&display=swap');
+
+
+$primary: #DC1637;
+$secondary: #18181F;
+
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #18181F;
+}
+
+.main-container {
+  margin: 0 auto;
+  width: 1200px;
+  margin-top: 2.5rem;
+}
+
+.ant-select {
+  color: #181818;
+}
+
+.ant-select-selection-placeholder {
+  opacity: 0.6;
+}
+
+.ant-select-item-option-content {
+  color: #333;
+}
+
+.ant-card-body {
+  padding: 10px;
+}
+
+.ant-rate-star-first,
+.ant-rate-star-second {
+  color: #ddd;
+}
+
+// .ant-btn {
+//   color: #333;
+// }
+
+.ant-input {
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}

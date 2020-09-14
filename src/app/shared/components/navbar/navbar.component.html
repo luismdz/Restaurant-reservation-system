@@ -1,0 +1,43 @@
+<nav>
+  <div class="logo">
+    <a [routerLink]="['/home']">
+      <span>LmTable</span>
+    </a>
+    <button nz-button
+      (click)="open()">
+      <i nz-icon
+        nzType="menu"
+        nzTheme="outline"></i>
+    </button>
+  </div>
+
+  <ul nz-menu
+    nzTheme="light"
+    nzMode="horizontal">
+
+    <li nz-menu-item
+      nzMatchRouter
+      [routerLink]="['/home']">
+      Inicio
+    </li>
+    <li nz-menu-item
+      nzMatchRouter
+      [routerLink]="['/reservations']">
+      Reservaciones
+    </li>
+
+    <li nz-menu-item
+      *ngIf="auth.user$ | async as user; else login"
+      (click)="auth.signOut()">
+      Cerrar Sesión
+    </li>
+    <ng-template #login>
+      <li nz-menu-item
+        nzMatchRouter
+        [routerLink]="['/auth', 'login']">
+        Iniciar Sesión
+      </li>
+    </ng-template>
+  </ul>
+
+</nav>

@@ -1,0 +1,38 @@
+.register-container {
+  width: min(350px, 90%);
+  margin: 0 auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    width: 100%;
+    margin-bottom: .5rem;
+  }
+
+  .btn-google {
+    margin: .5rem auto;
+  }
+
+}
+
+form {
+  width: 100%;
+
+  h1 {
+    text-align: center;
+    margin: 1rem auto;
+    margin-top: .25rem;
+  }
+
+  nz-form-label {
+    padding-bottom: .5rem;
+  }
+
+  small.error {
+    color: crimson;
+  }
+
+}

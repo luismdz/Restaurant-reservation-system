@@ -1,0 +1,93 @@
+<div class="register-container">
+  <form nz-form
+    [formGroup]="registerForm"
+    (ngSubmit)="onSignUp()">
+
+    <h1>Registro de usuario</h1>
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Campo obligatorio.">
+        <nz-form-label nzRequired>Nombre</nz-form-label>
+        <input type="text"
+          nz-input
+          formControlName="firstName"
+          placeholder="Nombre" />
+
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Campo obligatorio.">
+        <nz-form-label nzRequired>Apellido</nz-form-label>
+        <input type="text"
+          nz-input
+          formControlName="lastName"
+          placeholder="Apellido" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Ingrese un correo electrónico válido.">
+        <nz-form-label nzRequired>Correo Electrónico</nz-form-label>
+        <input type="text"
+          nz-input
+          formControlName="email"
+          placeholder="Correo Electronico" />
+
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control nzErrorTip="Ingrese una contraseña con mínimo seis caráteres.">
+        <nz-form-label nzRequired>Contraseña</nz-form-label>
+
+        <input type="password"
+          nz-input
+          formControlName="password"
+          placeholder="Contraseña" />
+
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control>
+        <nz-form-label nzRequired>Confirme su contraseña</nz-form-label>
+
+        <input type="password"
+          nz-input
+          formControlName="confirmPassword"
+          placeholder="Contraseña" />
+
+        <small class="error"
+          *ngIf="confirmPassword.touched &&
+            confirmPassword.errors?.MatchPassword">
+          Contraseñas no son iguales.
+        </small>
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button
+      nzType="primary"
+      [disabled]="!registerForm.valid">
+      Registrarse
+    </button>
+
+  </form>
+
+  <h2>ó</h2>
+
+  <button nz-button
+    nzType="primary"
+    class="btn-google"
+    (click)="googleSignIn()">
+    <i nz-icon
+      nzType="google"
+      nzTheme="outline"></i>
+    Continuar con Google
+  </button>
+
+  <button nz-button
+    nzType="link"
+    [routerLink]="['../', 'login']">
+    Tiene una cuenta? Inicie sesión
+  </button>
+</div>

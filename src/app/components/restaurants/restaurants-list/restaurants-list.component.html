@@ -1,0 +1,42 @@
+<app-buscador></app-buscador>
+<!-- <button nz-button
+  routerLink="../">Atrás</button> -->
+<button nz-button
+  (click)="onGoBack()">
+  <i nz-icon
+    nzType="arrow-left"
+    nzTheme="outline"></i>
+  Atrás
+</button>
+
+<div class="spinner"
+  *ngIf="isLoading">
+  <nz-spin nzSimple
+    [nzSize]="'large'"
+    [nzDelay]="1000"
+    nzTip="Cargando..."></nz-spin>
+</div>
+
+
+<div class="content">
+  <div class="filter">
+    <nz-card>
+      <span class="total">
+        {{ info.totalEntries  }} {{ info.totalEntries > 1 ? 'restaurantes encontrados' : 'restaurante encontrado'  }}.
+      </span>
+    </nz-card>
+  </div>
+
+
+  <div class="list">
+    <app-restaurant-item *ngFor="let restaurant of info.restaurants"
+      [restaurant]="restaurant">
+    </app-restaurant-item>
+  </div>
+
+  <nz-pagination class="pagination"
+    [nzPageIndex]="1"
+    nzResponsive
+    [nzTotal]="(info.totalPages * 10)"
+    (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+</div>

@@ -1,0 +1,71 @@
+<div class="bottom-content">
+    <form nz-form
+      #f="ngForm"
+      ngForm
+      (ngSubmit)="onSubmit(f)">
+  
+      <div class="selector">
+        <nz-select (nzOnSearch)="buscador.setValue($event.toLowerCase())"
+          nzShowSearch
+          nzAllowClear
+          required
+          #search="ngModel"
+          name="buscador"
+          [(ngModel)]="selectedValue"
+          nzPlaceHolder="Encuentra la ciudad o restaurante">
+  
+          <nz-option *ngIf="isLoading"
+            nzDisabled
+            nzCustomContent>
+            <i nz-icon
+              nzType="loading"
+              class="loading-icon"></i>
+            Cargando datos...
+          </nz-option>
+  
+          <nz-option-group *ngIf="!isLoading"
+            [nzLabel]="location">
+            <nz-option *ngFor="let city of searchedData.locations"
+              nzCustomContent
+              [nzLabel]="city"
+              [nzValue]="city">
+              {{ city }}
+            </nz-option>
+          </nz-option-group>
+  
+          <nz-option-group *ngIf="!isLoading"
+            [nzLabel]="restaurantTemp">
+            <nz-option *ngFor="let restaurant of searchedData.restaurants"
+              nzCustomContent
+              [nzLabel]="restaurant.name"
+              [nzValue]="restaurant.id">
+              {{ restaurant.name }}
+            </nz-option>
+          </nz-option-group>
+  
+          <ng-template #location>
+            <i nz-icon
+              nzType="environment"
+              nzTheme="outline"></i>
+            <span class="mx-1 opt-span">Ciudades</span>
+          </ng-template>
+  
+          <ng-template #restaurantTemp>
+            <i nz-icon
+              nzType="shop"
+              nzTheme="outline"></i>
+            <span class="mx-1 opt-span">Restaurantes</span>
+          </ng-template>
+  
+        </nz-select>
+        <small *ngIf="search.touched && search.invalid">
+          Campo Requerido
+        </small>
+      </div>
+  
+      <button nz-button
+        nzType="primary">
+        Buscar
+      </button>
+    </form>
+  </div>

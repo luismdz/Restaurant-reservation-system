@@ -1,0 +1,48 @@
+.px {
+  &-0 {
+    padding: 0;
+  }
+}
+
+nz-header {
+  height: 7vh;
+  margin-bottom: .5rem;
+}
+
+nz-content {
+  padding: 0 50px;
+  min-height: 92vh;
+}
+
+nz-footer {
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-content {
+  background: #fff;
+  padding-bottom: 1.5rem;
+  min-height: 92vh;
+  // min-height: 300px;
+}
+
+@media(min-width:765px) {
+  .px {
+    &-0 {
+      padding: 0 50px;
+    }
+  }
+
+}
+
+@media(min-width:1200px) {
+  .px {
+    &-0 {
+      padding: 0 15rem;
+    }
+  }
+
+}

@@ -1,0 +1,162 @@
+<!-- <button nz-button
+  [routerLink]="onGoBack()">Atrás</button> -->
+
+<div class="img"
+  *ngIf="restaurant?.image_url"
+  [ngStyle]="{'background': 'url('+ restaurant?.image_url + ') no-repeat center center/cover'}">
+</div>
+
+<div class="spinner"
+  *ngIf="isLoading">
+  <nz-spin nzSimple
+    [nzSize]="'large'"
+    [nzDelay]="1000"
+    nzTip="Cargando..."></nz-spin>
+</div>
+
+<div class="container"
+  *ngIf="!isLoading">
+
+  <button nz-button
+    (click)="onGoBack()">
+    <i nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"></i>
+    Atrás
+  </button>
+
+  <div class="inner-container">
+
+    <div class="details">
+
+      <h1 class="name"> {{ restaurant?.name }} </h1>
+      <p> {{ restaurant?.city }}, {{ restaurant?.state }}, {{ restaurant?.country?.name }} </p>
+
+      <nz-divider></nz-divider>
+      <div>
+        <i nz-icon
+          nzType="environment"
+          nzTheme="outline"></i>
+        <span> {{ restaurant?.address }} </span>
+      </div>
+      <div>
+        <i nz-icon
+          nzType="phone"
+          nzTheme="outline"></i>
+        <span> {{ restaurant?.phone | phone }} </span>
+      </div>
+      <p>
+        <nz-rate [ngModel]="restaurant?.price"
+          [nzCount]="4"
+          nzDisabled
+          [nzCharacter]="characterZhLetter"></nz-rate>
+      </p>
+      <ng-template #characterZhLetter>$</ng-template>
+
+      <div class="img-details"
+        *ngIf="restaurant?.image_url">
+
+        <nz-carousel nzAutoPlay>
+          <div nz-carousel-content
+            *ngFor="let img of images">
+            <div [ngStyle]="{'background': 'url('+ img + ') no-repeat center center/cover'}"></div>
+          </div>
+        </nz-carousel>
+      </div>
+    </div>
+
+    <div class="card">
+      <nz-card nzHoverable
+        class="card-reservation">
+        <h3>Haga una reservación</h3>
+        <nz-divider></nz-divider>
+        <div class="card-content">
+
+          <form nz-form
+            [formGroup]="reservationForm"
+            (ngSubmit)="onSubmit()">
+
+            <nz-form-item>
+              <nz-form-control>
+                <nz-form-label nzFor="tableFor">
+                  Cantidad de personas
+                </nz-form-label>
+
+                <nz-select id="tableFor"
+                  formControlName="numberOfPeople"
+                  nzPlaceHolder="Seleccionar cantidad de personas">
+                  <nz-option *ngFor="let n of numbers;"
+                    [nzValue]="n"
+                    [nzLabel]="n"></nz-option>
+                </nz-select>
+
+                <small class="error"
+                  *ngIf="reservationForm.get('numberOfPeople').invalid && reservationForm.get('numberOfPeople').touched">
+                  Campo obligatorio.
+                </small>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control>
+                <nz-form-label nzFor="date">Fecha</nz-form-label>
+
+                <nz-date-picker [ngStyle]="{'width': '100%'}"
+                  formControlName="reservationDate"
+                  [nzDisabledDate]="disabledDate">
+                </nz-date-picker>
+
+                <small class="error"
+                  *ngIf="reservationForm.get('reservationDate').invalid && reservationForm.get('reservationDate').touched">
+                  Campo obligatorio.
+                </small>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <nz-form-control>
+                <nz-form-label nzFor="time">Hora</nz-form-label>
+
+                <nz-time-picker [ngStyle]="{'width': '100%'}"
+                  formControlName="reservationTime"
+                  [nzMinuteStep]="15"
+                  nzFormat="h:mm a"
+                  nzUse12Hours>
+                </nz-time-picker>
+
+                <small class="error"
+                  *ngIf="reservationForm.get('reservationTime').invalid && reservationForm.get('reservationTime').touched">
+                  Campo obligatorio.
+                </small>
+              </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item>
+              <button nz-button
+                nzType="primary">
+                Reservar
+              </button>
+            </nz-form-item>
+          </form>
+        </div>
+      </nz-card>
+    </div>
+
+  </div>
+
+  <div class="map">
+    <h2>Ubicación</h2>
+
+    <nz-divider></nz-divider>
+
+    <app-map [restaurant]="restaurant"></app-map>
+  </div>
+
+</div>
+
+
+
+<!-- <pre>
+  {{ reservation?.date | date:'dd-MM-yyyy' }}
+  {{ reservation?.time | date:'hh:mm a' }}
+</pre> -->

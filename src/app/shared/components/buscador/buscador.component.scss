@@ -1,0 +1,69 @@
+.mx-1 {
+  margin: 0 10px;
+}
+
+.opt-span {
+  font-size: 14px;
+}
+
+.bottom-content {
+  padding: 1rem;
+
+  form {
+
+    height: auto;
+    padding: 2rem 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    .selector {
+      width: 100%;
+
+      small {
+        color: crimson;
+      }
+    }
+
+    nz-select {
+      width: 100%;
+      border-radius: 3px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      font-weight: 700;
+      color: rgba($color: #fff, $alpha: 0.8);
+      border-radius: 3px;
+    }
+  }
+}
+
+
+@media(min-width:768px) {
+
+  .bottom-content {
+    form {
+      flex-direction: row;
+      justify-content: space-around;
+
+      .selector {
+        width: 70%;
+      }
+
+      button {
+        width: 25%;
+        margin: 0;
+        align-self: flex-start;
+      }
+    }
+  }
+}

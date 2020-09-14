@@ -1,0 +1,78 @@
+<div class="spinner"
+  *ngIf="isLoading">
+  <nz-spin nzSimple
+    [nzSize]="'large'"
+    [nzDelay]="1000"
+    nzTip="Cargando..."></nz-spin>
+</div>
+
+
+<div class="container"
+  *ngIf="!isLoading;">
+
+  <button nz-button
+    (click)="onGoBack()">
+    <i nz-icon
+      nzType="arrow-left"
+      nzTheme="outline"></i>
+    Atrás
+  </button>
+
+  <h3 class="title">
+    Reservaciones de:
+    <small>{{ (user?.displayName === null ? user?.email : user?.displayName) }}</small>
+  </h3>
+
+  <div class="list"
+    *ngIf="reservations?.length > 0; else noData">
+
+    <nz-card class="card"
+      nzHoverable
+      *ngFor="let reservation of reservations">
+
+      <h4>{{ reservation.restaurant.name }}</h4>
+
+      <small>
+        {{ reservation.restaurant.city }}, {{ reservation.restaurant.country.name }}
+      </small>
+      <br>
+      <small>
+        <i nz-icon
+          nzType="environment"
+          nzTheme="outline"></i>
+        {{ reservation.restaurant.address }}
+      </small>
+
+      <nz-divider></nz-divider>
+
+      <div class="info">
+        <p>
+          <span>Fecha y Hora: </span>{{ reservation.date | date:'dd-MM-yyyy' }} a las
+          {{ reservation.time | date:'hh:mm a' }}
+        </p>
+        <p>
+          <span>Mesa para: </span> {{ reservation.cantidadPersonas }}
+          {{ reservation.cantidadPersonas > 1 ? 'personas' : 'persona' }}
+        </p>
+      </div>
+      <div class="act">
+        <button nz-button
+          nzType="primary"
+          [routerLink]="['/restaurant', reservation.restaurant?.id]">
+          Más información del restaurante
+          <i nz-icon
+            nzType="double-right"
+            nzTheme="outline"></i>
+        </button>
+      </div>
+    </nz-card>
+  </div>
+
+  <ng-template #noData>
+    <div class="no-data">
+      <h3>
+        No existen reservaciones para este usuario.
+      </h3>
+    </div>
+  </ng-template>
+</div>

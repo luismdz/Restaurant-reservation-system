@@ -1,0 +1,16 @@
+<div class="map"
+  *ngIf="restaurant">
+  <google-map height="300px"
+    width="100%"
+    [zoom]="zoom"
+    [center]="{'lat': restaurant?.lat, 'lng': restaurant?.lng}"
+    [options]="options">
+
+    <map-marker #markerElem
+      [title]="restaurant?.name"
+      [position]="{'lat': restaurant?.lat, 'lng': restaurant?.lng}"
+      [options]="marker.options"
+      [clickable]="true">
+    </map-marker>
+  </google-map>
+</div>

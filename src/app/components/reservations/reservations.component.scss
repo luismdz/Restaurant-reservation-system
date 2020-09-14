@@ -1,0 +1,90 @@
+.spinner {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  height: auto;
+  padding: 2rem;
+  margin: 0 auto;
+  width: min(1200px, 100%);
+
+  button {
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .list {
+
+    .card {
+      margin: .75rem auto;
+      width: min(350px, 100%);
+      padding: .5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      nz-divider {
+        margin: .75rem 0;
+      }
+
+      .act {
+        margin-top: 1rem;
+      }
+
+      small {
+        font-size: 12px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+
+
+      .info {
+        p {
+
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+.no-data {
+  height: auto;
+  padding: 2rem;
+  margin: 0 auto;
+
+  h3 {
+    text-align: center;
+  }
+}
+
+
+@media(min-width:768px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media(min-width:1024px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}

@@ -1,0 +1,40 @@
+nz-card {
+  padding: 0 2rem;
+}
+
+button {
+  margin: 1rem;
+  margin-top: 0;
+}
+
+.spinner {
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total {
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.list {
+  // padding: 1rem 0;
+  height: auto;
+}
+
+
+.pagination {
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+
+@media(min-width:768px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}

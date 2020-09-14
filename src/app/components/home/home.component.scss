@@ -1,0 +1,108 @@
+.top-content {
+  background-color: #181818;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem;
+    z-index: 10;
+
+    >* {
+      color: #fff;
+    }
+
+    h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.6rem;
+      margin: 1rem 0;
+      pointer-events: none;
+    }
+
+    button {
+      height: 50px;
+      max-width: 200px;
+      border-radius: 5px;
+      margin: 1.5rem 0;
+      font-weight: 700;
+      color: rgba($color: #fff, $alpha: 0.8);
+    }
+  }
+
+  .img {
+    opacity: 0.5;
+    height: 100%;
+    width: 100%;
+    background: url('/assets/img/restaurant-index.jpg') no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+}
+
+h2 {
+  margin: 1rem;
+}
+
+.grid {
+  width: min(90%, 1200px);
+  margin: 1rem auto;
+  display: flex;
+  gap: 1rem;
+  overflow: scroll;
+
+  img {
+    width: 100%;
+  }
+}
+
+
+@media(min-width:768px) {
+  .top-content {
+    height: 40vh;
+    background-color: #131313;
+
+    .text-content {
+      flex-basis: 70%;
+      padding-bottom: 1.5rem;
+
+      h1 {
+        font-size: 2rem;
+
+      }
+
+      button {
+        margin-top: 3rem;
+      }
+    }
+
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow: hidden;
+  }
+
+}
+
+@media(min-width:1024px) {
+
+  .top-content {
+    .text-content {
+      padding: 3rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+  }
+
+}
