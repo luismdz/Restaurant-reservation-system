@@ -44,7 +44,9 @@ export class ReservationService {
     if (uid) {
       console.log(uid);
 
-      return this.afs.collection<Reservation>('reservations', ref => ref.where('user.uid', '==', uid).orderBy('date', 'desc')).valueChanges({ idField: 'id' });
+      return this.afs.collection<Reservation>('reservations', ref => 
+        ref.where('user.uid', '==', uid)
+          .orderBy('date', 'desc')).valueChanges({ idField: 'id' });
     }
 
   }

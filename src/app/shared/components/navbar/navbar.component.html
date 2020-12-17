@@ -20,12 +20,13 @@
       [routerLink]="['/home']">
       Inicio
     </li>
-    <li nz-menu-item
+    <li *ngIf="auth.user$ | async"
+      nz-menu-item
       nzMatchRouter
-      [routerLink]="['/reservations']">
+      [routerLink]="
+      ['/reservations']">
       Reservaciones
     </li>
-
     <li nz-menu-item
       *ngIf="auth.user$ | async as user; else login"
       (click)="auth.signOut()">

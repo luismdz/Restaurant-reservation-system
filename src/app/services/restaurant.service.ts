@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, forkJoin } from 'rxjs';
-import { map, mergeMap, debounceTime, distinctUntilChanged, share } from 'rxjs/operators';
+import { Observable, forkJoin, of } from 'rxjs';
+import { map, mergeMap, debounceTime, distinctUntilChanged, share, catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -67,7 +67,8 @@ export class RestaurantService {
     return this.http.get('https://opentable.herokuapp.com/api/cities')
       .pipe(
         map((response: any) => response['cities']),
-        share()
+        share(),
+        catchError(err => of([]))
       );
 
   }
@@ -85,6 +86,7 @@ export class RestaurantService {
           return this.http.get(`https://opentable.herokuapp.com/api/restaurants?name=${term}`)
             .pipe(
               share(),
+              catchError(err => of([]))
             );
         }),
       )
@@ -101,6 +103,7 @@ export class RestaurantService {
           return { restaurants, ...data }
         }),
         share(),
+        catchError(err => of([]))
       );
   }
 
